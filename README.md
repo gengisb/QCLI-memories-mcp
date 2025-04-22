@@ -8,7 +8,7 @@ MCP Memory Server is a powerful contextual memory system designed specifically f
 
 ## Overview
 
-This MCP-based memory system allows AI assistants to build a rich understanding of users and their work over time. As users interact with the tool, it intelligently remembers key details from previous sessions, including:
+This MCP-based memory system allows AI assistants to build an understanding of users and their work over time. As users interact with the tool, it intelligently remembers key details from previous sessions, including:
 
 - Personal preferences and information
 - Preferred programming languages and frameworks
@@ -23,7 +23,7 @@ The result is a progressively more personalized experience that adapts to indivi
 
 ### 🧠 Intelligent Memory Storage
 
-The system automatically identifies and stores important information from conversations, categorizing it appropriately with tags like:
+The system can automatically (or be asked to) identify and stores important information from conversations, categorizing it appropriately with tags like:
 - `#code`: Programming languages, frameworks, coding patterns
 - `#architecture`: System designs, component relationships, infrastructure decisions
 - `#personal`: User preferences, background information
@@ -38,10 +38,12 @@ Memories can be retrieved through:
 
 ### 👥 Multi-User Support
 
-The system intelligently:
+The system:
 - Identifies users from conversation context
 - Maintains separate memory spaces for different users
 - Allows potential for shared project contexts across users
+
+Note that right now there is no user-level security context and memories can be shared. this will be later enhanced but could be used to work on projects with multiple users.
 
 ### 🔄 Progressive Learning
 
