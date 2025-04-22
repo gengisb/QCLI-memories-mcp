@@ -17,6 +17,8 @@ This MCP-based memory system allows AI assistants to build a rich understanding 
 
 The result is a progressively more personalized experience that adapts to individual workflows, eliminating the need to repeatedly explain technical context.
 
+Right now it only supports a local memory DB through SQLlite. the goal is to also allow a cloud-based memory.
+
 ## Installation
 
 ```bash
