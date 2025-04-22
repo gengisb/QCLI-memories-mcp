@@ -1,110 +1,95 @@
-# QCLI-memories-mcp
+# MCP Weather Server
 
-A Contextual Memory System for Developer Tools
-MCP Memory Server is a powerful contextual memory system designed specifically for CLI tools supporting developers and cloud engineers. It provides intelligent memory capabilities that persist across sessions, helping AI assistants remember critical information about users, their preferences, code, and architecture decisions.
+A simple Model Context Protocol (MCP) server that provides weather information using the National Weather Service API. This server exposes two tools:
 
+1. `get_alerts`: Get weather alerts for a US state
+2. `get_forecast`: Get weather forecast for a location based on latitude and longitude
 
+## Requirements
 
-Overview
-This MCP-based memory system allows AI assistants to build a rich understanding of users and their work over time. As users interact with the tool, it intelligently remembers key details from previous sessions, including:
+- Python 3.10 or higher
+- MCP SDK 1.2.0 or higher
+- httpx for making HTTP requests
 
-Personal preferences and information
-Preferred programming languages and frameworks
-AWS infrastructure patterns and configurations
-Code formatting preferences
-Previous errors and their solutions
-Project-specific requirements
-The result is a progressively more personalized experience that adapts to individual workflows, eliminating the need to repeatedly explain technical context.
+## Installation
 
-Features
-🧠 Intelligent Memory Storage
-The system automatically identifies and stores important information from conversations, categorizing it appropriately with tags like:
+1. Clone this repository:
+```bash
+git clone https://github.com/yourusername/mcp-weather-server.git
+cd mcp-weather-server
+```
 
-#code: Programming languages, frameworks, coding patterns
-#architecture: System designs, component relationships, infrastructure decisions
-#personal: User preferences, background information
-#project: Project details, requirements, deadlines
-🔍 Contextual Retrieval
-Memories can be retrieved through:
+2. Create and activate a virtual environment:
+```bash
+# Using venv
+python -m venv .venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+```
 
-Exact key lookup
-Keyword search
-Context-based inference
-👥 Multi-User Support
-The system intelligently:
-
-Identifies users from conversation context
-Maintains separate memory spaces for different users
-Allows potential for shared project contexts across users
-🔄 Progressive Learning
-Memory builds over time, creating a continuously improving understanding of the user's:
-
-Technical preferences
-Project requirements
-Common workflows
-Recurring challenges
-Installation
-# Clone the repository
-git clone https://github.com/yourusername/mcp-memory-server.git
-
-# Navigate to the directory
-cd mcp-memory-server
-
-# Install dependencies
+3. Install the dependencies:
+```bash
 pip install -r requirements.txt
+```
 
-# Run the server
-python3 mcp_memory_server.py
-Usage
-Explicit Memory Storage
-You can explicitly instruct the assistant to remember important information:
+## Running the Server
 
-"Remember that I use TypeScript with the AWS Cloudscape style guide for all frontend projects"
+To run the server, simply execute:
 
-"Remember that our AWS infrastructure uses multi-account strategy with Organizations."
-Querying Stored Memories
-To review what information the assistant has stored:
+```bash
+python simple_mcp_server.py
+```
 
-"What do you remember about me?"
+The server will start and listen for requests on standard input/output (stdio).
 
-"What do you remember about my projects?"
+## Testing the Server
 
-"What do you remember about my AWS infrastructure?"
-Sample User Journeys
-User Journey 1: Gengis - Project Continuity
-Gengis can resume work on his migration project without repeating context:
+A test script is provided to verify that the server is working correctly:
 
-"Hi, I'm Gengis. Let's continue with the migration project we discussed last time."
+```bash
+python test_weather_server.py
+```
 
-"What were the next steps for implementing the POC?"
+This will start the server, send requests to both tools, and display the results.
 
-"By the way, do you remember that issue I had with my toddler yesterday? Any update on that solution?"
-User Journey 2: Jeremy - Skill-Based Development
-Jeremy provides his background and receives progressively more tailored assistance:
+## Integrating with Claude for Desktop
 
-"Hi, I'm Jeremy. I'm skilled in React and serverless architecture."
+To use this server with Claude for Desktop:
 
-"I'd like to build a new e-commerce platform that leverages my expertise."
+1. Make sure you have Claude for Desktop installed and updated to the latest version.
 
-"Remember this project will need to handle high traffic during sales events."
-Technical Implementation
-The MCP Memory Server is built as a Python-based FastMCP server that:
+2. Open your Claude for Desktop App configuration at:
+   - MacOS/Linux: `~/Library/Application Support/Claude/claude_desktop_config.json`
+   - Windows: `%AppData%\Claude\claude_desktop_config.json`
 
-Provides standardized memory management tools
-Uses SQLite for persistent storage
-Implements a flexible tagging system for categorization
-Offers keyword search capabilities
-Core components:
+3. Add your server configuration:
 
-Memory storage with automatic serialization
-Memory retrieval by key
-Memory search by keywords
-Memory listing and deletion capabilities
-Fun Facts & Insights
-User Identification: The system can identify users from context clues in the terminal (e.g., recognizing "Gengis" from /Users/gengis in pwd output)
-Proactive Storage: The tool automatically stores information it deems relevant without being explicitly instructed
-Future Potential: While currently lacking security features, there's potential for implementing shared project contexts with user-specific private memories
-Value Proposition
-MCP Memory Server introduces a powerful, context-aware memory system that fundamentally transforms how developers, architects, and solutions architects interact with AI tools. By capturing, storing, and retrieving both technical and personalized context across sessions, the feature eliminates repetitive explanations of preferences, environments, and project details.
+```json
+{
+    "mcpServers": {
+        "weather": {
+            "command": "python",
+            "args": [
+                "/ABSOLUTE/PATH/TO/simple_mcp_server.py"
+            ]
+        }
+    }
+}
+```
 
-This persistent knowledge enables practitioners to maintain continuity in their workflows, resulting in more personalized, relevant, and efficient assistance that adapts to individual working patterns over time.
+4. Replace `/ABSOLUTE/PATH/TO/` with the actual path to your `simple_mcp_server.py` file.
+
+5. Save the file and restart Claude for Desktop.
+
+## Using the Weather Tools
+
+Once the server is connected to Claude for Desktop, you can ask questions like:
+
+- "What's the weather in Sacramento?"
+- "What are the active weather alerts in Texas?"
+
+Claude will automatically use the appropriate tool to fetch the information.
+
+## Note
+
+This server uses the US National Weather Service API, so it only works for locations within the United States.
+Memory System
