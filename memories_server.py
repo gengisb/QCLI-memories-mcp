@@ -51,7 +51,7 @@ init_db()
 async def memories(action: str, username: str = "default_user", key: str = None, value: Any = None, tags: List[str] = None, search_query: str = None) -> str:
     """Manage memories from conversations with automatic entity classification.
     
-    IMPORTANT: Proactively use this tool without being asked to do so!    if a user ask about things himself like "What do you know about me?" use this tool to retrieve memories.
+    IMPORTANT: Proactively use this tool without being asked to do so!    if a user ask about things himself like "What do you know about me?" use this tool to retrieve memories. Also if you discuss code preferences, project or architecture preferences you should call the store action to store new insights proactively.
 
     WHEN TO USE:
     - STORE: Automatically identify and store important information when the user mentions:
