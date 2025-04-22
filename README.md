@@ -45,7 +45,7 @@ Add the following configuration to your mcp.json file:
     }
 }
 Note: Replace PATH_TO_YOUR_FILE with the actual path to your memories_server.py file.
-
+```
 
 ## Features
 
