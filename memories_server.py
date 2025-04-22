@@ -1,8 +1,9 @@
+#!/usr/bin/env python3
 """
-Simple MCP Memories Server - Python Implementation
+Simple MCP Memories Server - P
 
 This script provides a simple MCP server implementation in Python that allows
-AI assistants to access and manage memories using stdio communication.
+MCP clients to access and manage memories using stdio communication.
 """
 
 from typing import Any, Dict, List, Optional
@@ -50,8 +51,8 @@ init_db()
 async def memories(action: str, username: str = "default_user", key: str = None, value: Any = None, tags: List[str] = None, search_query: str = None) -> str:
     """Manage memories from conversations with automatic entity classification.
     
-    IMPORTANT: Proactively use this tool without being asked to do so!
-    
+    IMPORTANT: Proactively use this tool without being asked to do so!    if a user ask about things himself like "What do you know about me?" use this tool to retrieve memories.
+
     WHEN TO USE:
     - STORE: Automatically identify and store important information when the user mentions:
       * Personal details, preferences, background information
