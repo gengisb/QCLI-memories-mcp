@@ -1,4 +1,4 @@
-# MCP Memory Server
+# Q-CLI MCP Memory Server
 
 ## A Contextual Memory System for Developer Tools
 
