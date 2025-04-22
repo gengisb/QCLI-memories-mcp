@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Simple MCP Memories Server - Python Implementation
 
